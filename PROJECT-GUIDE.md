@@ -25,7 +25,7 @@ Primary sources:
 
 Stage 0 is in progress.
 
-Project skeleton, technical approach, repository guide, and evidence registers have been created. The project is connected to `https://github.com/Renzo-McG/AkariStudio`. The approved creative direction is **Warm Luminous Precision**. Continue with identity development; final Ashworth evidence capture waits for the demo’s stable approved state.
+Project skeleton, technical approach, repository guide, and evidence registers have been created. The project is connected to `https://github.com/Renzo-McG/AkariStudio`. The approved creative direction is **Warm Luminous Precision** and the hybrid identity direction is approved. Continue with the signature homepage prototype; final Ashworth evidence capture waits for the demo’s stable approved state.
 
 ## Locked decisions
 
@@ -55,6 +55,7 @@ Project skeleton, technical approach, repository guide, and evidence registers h
 - Explain its meaning once in a deliberate brand moment.
 - Avoid Japanese visual clichés and literal light symbols.
 - The identity must work statically, in one colour, and at favicon size.
+- Approved hybrid: bilingual `AKARI STUDIO / 明かり` lockup, compact aperture mark, restrained light-line reveal.
 
 ## Approved visual direction
 
