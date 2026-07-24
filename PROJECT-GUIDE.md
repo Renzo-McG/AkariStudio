@@ -25,7 +25,7 @@ Primary sources:
 
 Stage 0 is in progress.
 
-Project skeleton, technical approach, repository guide, and evidence registers have been created. The remote GitHub repository still needs to be created and connected. Ashworth & Vale evidence capture remains to be completed before Stage 0 review.
+Project skeleton, technical approach, repository guide, and evidence registers have been created. The project is connected to `https://github.com/Renzo-McG/AkariStudio` and the foundation is on `main`. Ashworth & Vale evidence capture and licensing review remain before Stage 0 approval.
 
 ## Locked decisions
 
@@ -86,4 +86,3 @@ When a decision changes:
 5. verify and record the milestone.
 
 Do not leave an approved decision only in chat.
-
