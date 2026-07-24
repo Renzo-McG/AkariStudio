@@ -5,15 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Akari Studio creates distinctive websites that bring the quality of small businesses to light.">
     <title>Akari Studio — Your quality, brought to light.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/main.js" defer></script>
   </head>
   <body>
-    <main class="placeholder">
-      <p class="placeholder__japanese" lang="ja">明かり</p>
-      <p class="placeholder__name">Akari Studio</p>
-      <h1>Your quality,<br>brought to light.</h1>
-      <p class="placeholder__status">Company website — experience development in progress.</p>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="#top" aria-label="Akari Studio home">
+          <span class="brand__name">Akari Studio</span>
+          <span class="brand__japanese" lang="ja">明かり</span>
+        </a>
+
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#work">Work</a>
+          <a href="#approach">Approach</a>
+          <a class="btn btn--small" href="#contact">Start a project</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow">Websites for ambitious small businesses</p>
+            <h1 id="hero-title">The quality is already there. <span>Let’s make sure people see it.</span></h1>
+            <p class="hero__intro">Akari creates thoughtful, distinctive websites that make excellent businesses easier to recognise, trust and choose.</p>
+
+            <div class="hero__actions">
+              <a class="btn" href="#work">See our work</a>
+              <a class="text-link" href="#contact">Show us your current site <span aria-hidden="true">→</span></a>
+            </div>
+
+            <div class="meaning">
+              <span class="meaning__word" lang="ja">明かり</span>
+              <span><strong>akari</strong> — light; illumination</span>
+            </div>
+          </div>
+
+          <div class="reveal-demo" data-reveal-demo>
+            <div class="reveal-demo__heading">
+              <div>
+                <p class="eyebrow">A quality business</p>
+                <p class="reveal-demo__title">Brought into focus.</p>
+              </div>
+              <button class="reveal-control" type="button" aria-pressed="false" data-reveal-control>
+                <span data-control-label>Bring it to light</span>
+                <span class="reveal-control__icon" aria-hidden="true">✦</span>
+              </button>
+            </div>
+
+            <div class="reveal-stage">
+              <div class="reveal-stage__glow" aria-hidden="true"></div>
+
+              <article class="business-card business-card--image">
+                <img src="assets/images/ashworth-home.jpg" alt="A bright contemporary home extension">
+                <span class="business-card__label">Beautiful work</span>
+              </article>
+
+              <article class="business-card business-card--quote">
+                <span class="stars" aria-label="Five-star review">★★★★★</span>
+                <p>“The finish and communication were exceptional.”</p>
+              </article>
+
+              <article class="business-card business-card--trust">
+                <span class="business-card__number">12+</span>
+                <span>years of trusted work</span>
+              </article>
+
+              <article class="website-card" aria-label="A composed website example">
+                <div class="website-card__bar">
+                  <span>Ashworth <b>&amp;</b> Vale</span>
+                  <span class="website-card__menu">Projects&nbsp;&nbsp; Process&nbsp;&nbsp; Enquire</span>
+                </div>
+                <div class="website-card__image">
+                  <img src="assets/images/ashworth-home.jpg" alt="">
+                  <div class="website-card__message">
+                    <span>Design &amp; build</span>
+                    <strong>Homes made for living.</strong>
+                    <small>Surrey &amp; South West London</small>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <p class="reveal-demo__note" aria-live="polite" data-reveal-status>
+              The ingredients are strong. The experience brings them together.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="brand-line" aria-label="Akari Studio proposition">
+        <div class="container brand-line__inner">
+          <span class="brand-line__mark" lang="ja">明</span>
+          <p>Your quality, <strong>brought to light.</strong></p>
+          <span class="brand-line__rule" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <section class="work-preview" id="work" aria-labelledby="work-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Selected work</p>
+            <h2 id="work-title">Creative when it matters.<br>Clear where it counts.</h2>
+            <p>Akari’s own site shows the possibilities. Client work applies the same thinking with the restraint each business and audience needs.</p>
+          </div>
+
+          <a class="project-preview" href="#" aria-label="Explore the Ashworth and Vale concept project">
+            <div class="project-preview__image">
+              <img src="assets/images/ashworth-home.jpg" alt="Contemporary Ashworth and Vale residential project">
+              <span>Independent concept project</span>
+            </div>
+            <div class="project-preview__content">
+              <p class="eyebrow">Residential design &amp; build</p>
+              <h3>Ashworth &amp; Vale</h3>
+              <p>A calm, modern website that turns project quality, process clarity and homeowner reassurance into one coherent experience.</p>
+              <span class="text-link">Explore the thinking <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+        </div>
+      </section>
     </main>
   </body>
 </html>
-

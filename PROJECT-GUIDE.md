@@ -25,7 +25,7 @@ Primary sources:
 
 Stage 0 is in progress.
 
-Project skeleton, technical approach, repository guide, and evidence registers have been created. The project is connected to `https://github.com/Renzo-McG/AkariStudio` and the foundation is on `main`. Ashworth & Vale evidence capture and licensing review remain before Stage 0 approval.
+Project skeleton, technical approach, repository guide, and evidence registers have been created. The project is connected to `https://github.com/Renzo-McG/AkariStudio`. The approved creative direction is **Warm Luminous Precision**. Continue with identity development; final Ashworth evidence capture waits for the demo’s stable approved state.
 
 ## Locked decisions
 
@@ -55,6 +55,16 @@ Project skeleton, technical approach, repository guide, and evidence registers h
 - Explain its meaning once in a deliberate brand moment.
 - Avoid Japanese visual clichés and literal light symbols.
 - The identity must work statically, in one colour, and at favicon size.
+
+## Approved visual direction
+
+- Direction name: **Warm Luminous Precision**
+- Inter only; no serif pairing
+- White, cool grey, near-black, disciplined navy
+- Restrained warm-stone/beige surfaces
+- Familiar, professional structure derived from Ashworth & Vale
+- Akari’s distinction comes through controlled illumination, reveal, pacing, and proof
+- Avoid fragmented technical grids, monospace, acid colour, dark creative-coding aesthetics, and awards-site theatre
 
 ## Proof rules
 
