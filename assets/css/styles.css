@@ -2214,27 +2214,36 @@ h2 {
   }
 
   .reveal-stage {
-    min-height: 390px;
+    min-height: 520px;
   }
 
   .business-card--image {
-    width: calc(100% - 82px);
+    width: calc(100% - 32px);
     left: 16px;
     top: 20px;
+    transform: none;
+  }
+
+  .business-card--image img {
+    height: 176px;
   }
 
   .business-card--trust {
-    width: 178px;
-    left: 28px;
+    width: calc(100% - 32px);
+    min-height: 72px;
+    left: 16px;
     bottom: 20px;
     z-index: 2;
+    transform: none;
   }
 
   .business-card--quote {
-    width: 190px;
-    right: 14px;
-    top: 208px;
+    width: calc(100% - 32px);
+    min-height: 126px;
+    right: 16px;
+    top: 252px;
     z-index: 3;
+    transform: none;
   }
 
   .website-card {
@@ -2416,7 +2425,9 @@ h2 {
   }
 
   .case-hero__image img {
-    height: 360px;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
   }
 
   .case-live-link {
@@ -2441,6 +2452,38 @@ h2 {
     min-height: auto;
     padding: 16px;
     gap: 28px;
+  }
+
+  .evidence-workspace {
+    overflow: visible;
+    border-top: 0;
+  }
+
+  .evidence-instruction {
+    border: 1px solid rgb(255 255 255 / 18%);
+    border-bottom: 0;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .evidence-tabs {
+    position: sticky;
+    z-index: 8;
+    top: 72px;
+    border: 1px solid rgb(255 255 255 / 18%);
+    box-shadow: 0 12px 28px rgb(8 10 15 / 28%);
+    scrollbar-width: none;
+  }
+
+  .evidence-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .evidence-panel {
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / 18%);
+    border-top: 0;
+    border-radius: 0 0 12px 12px;
+    background: #171b23;
   }
 
   .evidence-panel__image img,
