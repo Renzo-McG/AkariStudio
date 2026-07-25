@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html class="no-js" lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,12 +61,21 @@
               </div>
               <button class="reveal-control" type="button" aria-pressed="false" data-reveal-control>
                 <span data-control-label>Bring it to light</span>
-                <span class="reveal-control__icon" aria-hidden="true">✦</span>
+                <span class="mini-aperture" aria-hidden="true">
+                  <span></span>
+                </span>
               </button>
             </div>
 
-            <div class="reveal-stage">
+            <div class="reveal-state" aria-hidden="true">
+              <span class="is-active" data-state-evidence>Strong ingredients</span>
+              <span class="reveal-state__line"><i data-state-progress></i></span>
+              <span data-state-experience>One clear experience</span>
+            </div>
+
+            <div class="reveal-stage" role="group" aria-label="A demonstration showing strong business evidence becoming a clear website">
               <div class="reveal-stage__glow" aria-hidden="true"></div>
+              <div class="reveal-stage__beam" aria-hidden="true"></div>
 
               <article class="business-card business-card--image">
                 <img src="assets/images/ashworth-home.jpg" alt="A bright contemporary home extension">
@@ -102,6 +111,9 @@
             <p class="reveal-demo__note" aria-live="polite" data-reveal-status>
               The ingredients are strong. The experience brings them together.
             </p>
+            <noscript>
+              <p class="reveal-demo__noscript">The completed website view is shown because interactive comparison requires JavaScript.</p>
+            </noscript>
           </div>
         </div>
       </section>

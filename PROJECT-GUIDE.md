@@ -25,7 +25,9 @@ Primary sources:
 
 Stage 0 is in progress.
 
-Project skeleton, technical approach, repository guide, and evidence registers have been created. The project is connected to `https://github.com/Renzo-McG/AkariStudio`. The approved creative direction is **Warm Luminous Precision** and the hybrid identity direction is approved. Continue with the signature homepage prototype; final Ashworth evidence capture waits for the demo’s stable approved state.
+Project skeleton, technical approach, repository guide, and evidence registers have been created. The project is connected to `https://github.com/Renzo-McG/AkariStudio`. The approved creative direction is **Warm Luminous Precision**, the hybrid identity direction is approved, and the signature homepage prototype is approved. Continue with the Home → Ashworth & Vale case-study experience; final evidence capture waits for the demo’s stable approved state.
+
+Rolling preview: `https://renzo-mcg.github.io/AkariStudio/`
 
 ## Locked decisions
 
