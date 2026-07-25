@@ -1,6 +1,6 @@
 # Akari Studio Website — Repository Guide
 
-Last reviewed: 24 July 2026
+Last reviewed: 25 July 2026
 
 ## Read first
 
@@ -20,14 +20,24 @@ Primary sources:
 6. `04 Work and Proof Strategy.md`
 7. `05 Content Requirements and Decisions.md`
 8. `08 Visual Identity and Logo Brief.md`
+9. `11 UX and Usability Audit.md`
 
 ## Current handover
 
-Stage 0 is in progress.
+The complete rolling-preview site is implemented and has passed the first structured UX/usability review.
 
-Project skeleton, technical approach, repository guide, and evidence registers have been created. The project is connected to `https://github.com/Renzo-McG/AkariStudio`. The approved creative direction is **Warm Luminous Precision**, the hybrid identity direction is approved, and the signature homepage prototype is approved. Continue with the Home → Ashworth & Vale case-study experience; final evidence capture waits for the demo’s stable approved state.
+Implemented routes:
+
+- `/` — complete homepage, cross-industry method, ways to work, fit guidance, and enquiry preparation
+- `/case-study.html` — transparent Ashworth & Vale concept case study
+- `/privacy.html` — accurate preview-stage privacy explanation
+- `/404.html` — branded recovery page
+
+The remaining production dependency is the enquiry delivery endpoint. The form currently validates input and prepares a structured project summary locally; it deliberately does not imply that a message was sent. Before a final custom-domain launch, connect the chosen inbox/form service, add appropriate spam protection, test a real submission, and update the privacy copy.
 
 Rolling preview: `https://renzo-mcg.github.io/AkariStudio/`
+
+Detailed audit: `AkariStudios/Studio Website/11 UX and Usability Audit.md`
 
 ## Locked decisions
 
@@ -87,6 +97,16 @@ Rolling preview: `https://renzo-mcg.github.io/AkariStudio/`
 - Core content readable without JavaScript
 - Respect `prefers-reduced-motion`
 - Optimised local image/video assets
+
+## Implemented interaction contract
+
+- Header becomes visually grounded after scroll.
+- Mobile navigation uses a labelled button, `aria-expanded`, Escape-to-close, focus return, and body-scroll lock.
+- Industry and case-evidence switchers use real tab semantics and support Arrow keys, Home, and End.
+- The before/after comparison supports pointer, touch, Arrow keys, Home, and End.
+- Form validation identifies each missing field, moves focus to the first error, and exposes the prepared summary as a focused result.
+- All essential copy remains available when JavaScript is unavailable.
+- Reduced-motion users receive the composed state without decorative transition delay.
 
 ## Change protocol
 
