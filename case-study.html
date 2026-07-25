@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <script src="assets/js/main.js" defer></script>
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260725-2">
+    <script src="assets/js/main.js?v=20260725-2" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -95,10 +95,11 @@
           </div>
 
           <div class="evidence-workspace" data-evidence-workspace>
+            <p class="evidence-instruction" id="evidence-instruction">Choose a view to explore what visitors see, why it works, and what Akari can reuse.</p>
             <div class="evidence-tabs" role="tablist" aria-label="Case study evidence views">
-              <button role="tab" aria-selected="true" aria-controls="evidence-experience" id="evidence-tab-experience" data-evidence-tab="experience">Experience</button>
-              <button role="tab" aria-selected="false" aria-controls="evidence-reasoning" id="evidence-tab-reasoning" data-evidence-tab="reasoning">Reasoning</button>
-              <button role="tab" aria-selected="false" aria-controls="evidence-system" id="evidence-tab-system" data-evidence-tab="system">System</button>
+              <button role="tab" aria-selected="true" aria-controls="evidence-experience" aria-describedby="evidence-instruction" id="evidence-tab-experience" data-evidence-tab="experience">Experience</button>
+              <button role="tab" aria-selected="false" aria-controls="evidence-reasoning" aria-describedby="evidence-instruction" id="evidence-tab-reasoning" data-evidence-tab="reasoning">Reasoning</button>
+              <button role="tab" aria-selected="false" aria-controls="evidence-system" aria-describedby="evidence-instruction" id="evidence-tab-system" data-evidence-tab="system">System</button>
             </div>
 
             <div class="evidence-panel" role="tabpanel" id="evidence-experience" aria-labelledby="evidence-tab-experience" data-evidence-panel="experience">

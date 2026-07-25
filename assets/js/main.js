@@ -75,14 +75,14 @@ if (
   });
 }
 
-const createTabs = ({ tabSelector, panelSelector, keyAttribute }) => {
+const createTabs = ({ tabSelector, panelSelector }) => {
   const tabs = [...document.querySelectorAll(tabSelector)];
   const panels = [...document.querySelectorAll(panelSelector)];
 
   if (!tabs.length || !panels.length) return;
 
   const activate = (activeTab, moveFocus = false) => {
-    const key = activeTab.dataset[keyAttribute];
+    const targetPanelId = activeTab.getAttribute("aria-controls");
 
     tabs.forEach((tab) => {
       const isActive = tab === activeTab;
@@ -91,7 +91,7 @@ const createTabs = ({ tabSelector, panelSelector, keyAttribute }) => {
     });
 
     panels.forEach((panel) => {
-      panel.hidden = panel.dataset[keyAttribute.replace("Tab", "Panel")] !== key;
+      panel.hidden = panel.id !== targetPanelId;
     });
 
     if (moveFocus) activeTab.focus();
@@ -119,13 +119,11 @@ const createTabs = ({ tabSelector, panelSelector, keyAttribute }) => {
 createTabs({
   tabSelector: "[data-question-tab]",
   panelSelector: "[data-question-panel]",
-  keyAttribute: "questionTab",
 });
 
 createTabs({
   tabSelector: "[data-evidence-tab]",
   panelSelector: "[data-evidence-panel]",
-  keyAttribute: "evidenceTab",
 });
 
 const beforeAfter = document.querySelector("[data-before-after]");

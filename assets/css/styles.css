@@ -1580,18 +1580,43 @@ h2 {
   background: #171b23;
 }
 
+.evidence-instruction {
+  margin: 0;
+  padding: 18px 24px;
+  border-bottom: 1px solid rgb(255 255 255 / 14%);
+  color: #c8ced7;
+  font-size: 14px;
+}
+
 .evidence-tabs {
   border-bottom-color: rgb(255 255 255 / 14%);
   background: #10131a;
 }
 
 .evidence-tabs button {
+  position: relative;
   color: #9ba4b0;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.evidence-tabs button:hover {
+  background: rgb(255 255 255 / 7%);
+  color: #fff;
 }
 
 .evidence-tabs button[aria-selected="true"] {
   background: #fff;
   color: var(--color-ink);
+}
+
+.evidence-tabs button[aria-selected="true"]::after {
+  position: absolute;
+  right: 18px;
+  bottom: 10px;
+  left: 18px;
+  height: 2px;
+  background: var(--color-accent);
+  content: "";
 }
 
 .evidence-panel {
