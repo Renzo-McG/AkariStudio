@@ -39,6 +39,13 @@ Rolling preview: `https://renzo-mcg.github.io/AkariStudio/`
 
 Detailed audit: `AkariStudios/Studio Website/11 UX and Usability Audit.md`
 
+Custom domain: `https://akaristudio.co.uk/`
+
+Domain connection was configured on 26 July 2026. The Krystal DNS zone uses
+`ns1–ns4.kloudns.co.uk`, the apex has GitHub Pages’ four A records, and `www`
+is a CNAME to `renzo-mcg.github.io`. HTTPS enforcement remains pending until
+GitHub finishes certificate issuance after nameserver propagation.
+
 ## Locked decisions
 
 - Public name: **Akari Studio**
