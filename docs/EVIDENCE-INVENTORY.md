@@ -4,7 +4,8 @@
 
 - Local repository: `AkariStudios/akari-studio-site/`
 - GitHub repository: `https://github.com/Renzo-McG/Ashworth-and-Vale`
-- Rolling preview: `https://renzo-mcg.github.io/Ashworth-and-Vale/`
+- Branded demo address: `https://ashworth-vale.akaristudio.co.uk/`
+- GitHub Pages fallback: `https://renzo-mcg.github.io/Ashworth-and-Vale/`
 - Current local repository contains uncommitted work. Treat it as read-only for Akari evidence collection.
 
 ## Evidence candidates
