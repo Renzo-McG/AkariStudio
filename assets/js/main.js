@@ -374,7 +374,7 @@ if (projectForm) {
     result.hidden = false;
     copyStatus.textContent = "";
 
-    const subject = `Project enquiry — ${businessName || "Akari Studio"}`;
+    const subject = `Project enquiry | ${businessName || "Akari Studio"}`;
     const emailHref = `mailto:hello@akaristudio.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(preparedSummary)}`;
     window.location.href = emailHref;
   });
