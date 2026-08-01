@@ -8,8 +8,9 @@ Akari creates distinctive, conversion-led websites for ambitious small businesse
 
 ## Status
 
-The public site remains on the approved production baseline while the final
-pre-outreach candidate is reviewed locally on `feature/final-studio-pass`.
+The approved final pre-outreach pass is live at
+[`https://akaristudio.co.uk`](https://akaristudio.co.uk), deployed from `main`
+at `a2e06df` on 1 August 2026.
 
 The approved initial release contains:
 
@@ -18,10 +19,9 @@ The approved initial release contains:
 - Two enquiry routes: “Show us your current site” and “Start a project”
 - Privacy content and a custom 404 experience
 
-The local candidate adds the approved Luminous Continuity interaction system,
-a hybrid desktop/mobile Process presentation, two non-priced website routes,
-stronger responsive evidence and a truthful email-preparation journey. It has
-not been pushed, merged or deployed.
+The current release includes the approved Luminous Continuity interaction
+system, a hybrid desktop/mobile Process presentation, two non-priced website
+routes, stronger responsive evidence and a truthful email-preparation journey.
 
 Read `PROJECT-GUIDE.md` before changing strategy, content, design, or implementation.
 

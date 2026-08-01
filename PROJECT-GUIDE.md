@@ -28,9 +28,10 @@ Primary sources:
 
 ## Current handover
 
-The live site remains on production baseline `2d0fc8b`. The final pre-outreach
-candidate is isolated on local branch `feature/final-studio-pass`; it must not
-be treated as live until Lawrence approves, pushes and deploys it.
+The approved final pre-outreach pass is live from `main` at implementation
+commit `a2e06df`, deployed and validated on 1 August 2026. The local feature
+branch `feature/final-studio-pass` remains as development history; it is not a
+separate deployment.
 
 Implemented routes:
 
@@ -43,9 +44,11 @@ Implemented routes:
 Real form delivery is deliberately deferred. The candidate validates input,
 prepares a structured email locally and continues in the visitor's email
 application; it never claims that Akari received the enquiry. The public
-fallback is `hello@akaristudio.co.uk`, which must be operationally verified
-before deployment. A later delivery endpoint requires its own provider,
-privacy, abuse-prevention and success/error-state workstream.
+fallback is `hello@akaristudio.co.uk`. Lawrence confirmed that this address is
+configured in Google Workspace and authorised deployment while its expected
+24-hour activation period completes; a full external round-trip remains a
+post-propagation operational check. A later delivery endpoint requires its own
+provider, privacy, abuse-prevention and success/error-state workstream.
 
 Rolling preview: `https://renzo-mcg.github.io/AkariStudio/`
 
