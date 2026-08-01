@@ -3520,9 +3520,10 @@ body.is-work-reached .project-preview__light {
     transition: none;
   }
 
-  body.is-illuminated .brand-line__rule::after,
-  body.is-work-reached .work-preview::before,
-  body.is-work-reached .project-preview__light {
+  .brand-line__rule::after,
+  .work-preview::before,
+  .project-preview__light,
+  .case-hero__image::after {
     transform: none;
   }
 
