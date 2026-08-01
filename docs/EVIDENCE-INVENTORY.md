@@ -84,6 +84,7 @@ The production case study deliberately uses a focused subset rather than pretend
 | `assets/images/ashworth-after.jpg` | Before/after comparison reveal | Lazy | Included |
 | `assets/images/ashworth-projects.jpg` | Decision-journey/system evidence | Lazy | Included |
 | `assets/images/ashworth-services.jpg` | Service-structure evidence | Lazy | Included |
+| `assets/images/ashworth-mobile.jpg` | Real 390px responsive homepage view | Lazy | Included in local candidate |
 
 Implemented evidence interactions:
 
@@ -91,6 +92,15 @@ Implemented evidence interactions:
 - Before/after control with pointer, touch, Arrow, Home, and End input
 - Static text and imagery retain the full argument without animation
 - Independent fictional concept label appears before visitors could infer a client relationship
+
+## Responsive evidence added — 1 August 2026
+
+- Captured directly from `https://ashworth-vale.akaristudio.co.uk/` at a verified
+  390 × 844 browser viewport.
+- The capture is shown as a single compact proof point, not a device carousel.
+- Supporting copy records the responsive hierarchy, keyboard and reduced-motion
+  considerations without inventing technical scores or commercial results.
+- The original Ashworth repository was not changed to create this evidence.
 
 ## Evidence principles
 

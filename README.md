@@ -8,7 +8,8 @@ Akari creates distinctive, conversion-led websites for ambitious small businesse
 
 ## Status
 
-Stage 0 — project setup and evidence audit.
+The public site remains on the approved production baseline while the final
+pre-outreach candidate is reviewed locally on `feature/final-studio-pass`.
 
 The approved initial release contains:
 
@@ -16,6 +17,11 @@ The approved initial release contains:
 - An Ashworth & Vale case study
 - Two enquiry routes: “Show us your current site” and “Start a project”
 - Privacy content and a custom 404 experience
+
+The local candidate adds the approved Luminous Continuity interaction system,
+a hybrid desktop/mobile Process presentation, two non-priced website routes,
+stronger responsive evidence and a truthful email-preparation journey. It has
+not been pushed, merged or deployed.
 
 Read `PROJECT-GUIDE.md` before changing strategy, content, design, or implementation.
 
@@ -40,4 +46,3 @@ Serve this directory with a local static server and open `index.html`.
 ## Source material
 
 The Ashworth & Vale project is a separate repository. Do not edit or move it as part of Akari company-site work.
-

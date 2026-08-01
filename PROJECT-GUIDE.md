@@ -20,20 +20,32 @@ Primary sources:
 6. `04 Work and Proof Strategy.md`
 7. `05 Content Requirements and Decisions.md`
 8. `08 Visual Identity and Logo Brief.md`
-9. `11 UX and Usability Audit.md`
+9. `11 Strong Sites Design Review.md`
+10. `12 Interaction and Motion Direction.md`
+11. `13 Luminous Continuity Prototype.md`
+12. `14 Final Production Implementation Brief.md`
+13. `15 Final Studio Pass Implementation.md`
 
 ## Current handover
 
-The complete rolling-preview site is implemented and has passed the first structured UX/usability review.
+The live site remains on production baseline `2d0fc8b`. The final pre-outreach
+candidate is isolated on local branch `feature/final-studio-pass`; it must not
+be treated as live until Lawrence approves, pushes and deploys it.
 
 Implemented routes:
 
-- `/` — complete homepage, cross-industry method, ways to work, fit guidance, and enquiry preparation
+- `/` — complete homepage, cross-industry method, non-priced website routes,
+  fit guidance, hybrid Process and local email preparation
 - `/case-study.html` — transparent Ashworth & Vale concept case study
 - `/privacy.html` — accurate preview-stage privacy explanation
 - `/404.html` — branded recovery page
 
-The remaining production dependency is the enquiry delivery endpoint. The form currently validates input and prepares a structured project summary locally; it deliberately does not imply that a message was sent. Before a final custom-domain launch, connect the chosen inbox/form service, add appropriate spam protection, test a real submission, and update the privacy copy.
+Real form delivery is deliberately deferred. The candidate validates input,
+prepares a structured email locally and continues in the visitor's email
+application; it never claims that Akari received the enquiry. The public
+fallback is `hello@akaristudio.co.uk`, which must be operationally verified
+before deployment. A later delivery endpoint requires its own provider,
+privacy, abuse-prevention and success/error-state workstream.
 
 Rolling preview: `https://renzo-mcg.github.io/AkariStudio/`
 
@@ -131,13 +143,23 @@ Outbound reports and concepts remain separate from this company website reposito
 
 ## Implemented interaction contract
 
-- Header becomes visually grounded after scroll.
+- Header becomes visually grounded through a discrete observation state rather
+  than a continuous scroll handler.
 - Mobile navigation uses a labelled button, `aria-expanded`, Escape-to-close, focus return, and body-scroll lock.
 - Industry and case-evidence switchers use real tab semantics and support Arrow keys, Home, and End.
 - The before/after comparison supports pointer, touch, Arrow keys, Home, and End.
 - Form validation identifies each missing field, moves focus to the first error, and exposes the prepared summary as a focused result.
 - All essential copy remains available when JavaScript is unavailable.
 - Reduced-motion users receive the composed state without decorative transition delay.
+- The visitor-controlled hero illumination resolves into the Work chapter; it
+  does not activate automatically on scroll.
+- Process uses a sticky visual only at suitable desktop width and height. Short
+  desktop, tablet and mobile use the complete in-flow sequence.
+- One-page and multi-page website routes remain fully stated in the document;
+  the interactive focus treatment adds comparison without exposing prices.
+- Work-to-case-study navigation remains an ordinary semantic link. The
+  cross-document shared-element enhancement is deferred until current Chrome
+  and Safari can both pass the production gate.
 
 ## Change protocol
 
