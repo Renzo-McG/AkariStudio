@@ -5,15 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Akari Studio creates distinctive websites that bring the quality of small businesses to light.">
     <meta name="theme-color" content="#F5F3EE">
+    <link rel="canonical" href="https://akaristudio.co.uk/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Akari Studio">
+    <meta property="og:title" content="Akari Studio — Your quality, brought to light.">
+    <meta property="og:description" content="Thoughtful, distinctive websites that make excellent small businesses easier to recognise, trust and choose.">
+    <meta property="og:url" content="https://akaristudio.co.uk/">
+    <meta property="og:image" content="https://akaristudio.co.uk/assets/images/akari-social-preview.png">
+    <meta name="twitter:card" content="summary_large_image">
     <title>Akari Studio — Your quality, brought to light.</title>
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/images/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css?v=20260725-4">
-    <script src="assets/js/main.js?v=20260725-4" defer></script>
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260801-1">
+    <script src="assets/js/main.js?v=20260801-1" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
+    <span class="header-sentinel" data-header-sentinel aria-hidden="true"></span>
 
     <header class="site-header" data-header>
       <div class="container site-header__inner">
@@ -60,7 +72,7 @@
           <div class="hero__copy">
             <p class="eyebrow">Websites for ambitious small businesses</p>
             <h1 id="hero-title">The quality is already there. <span>Let’s make sure people see it.</span></h1>
-            <p class="hero__intro">Akari creates thoughtful, distinctive websites that make excellent businesses easier to recognise, trust and choose.</p>
+            <p class="hero__intro">Akari designs and builds thoughtful, distinctive websites that make excellent businesses easier to recognise, trust and choose.</p>
 
             <div class="hero__actions">
               <a class="btn" href="#work">See our work</a>
@@ -139,7 +151,7 @@
         </div>
       </section>
 
-      <section class="brand-line" aria-label="Akari Studio proposition">
+      <section class="brand-line" aria-label="Akari Studio proposition" data-luminous-bridge>
         <div class="container brand-line__inner">
           <span class="brand-mark brand-mark--small" aria-hidden="true">
             <span class="brand-mark__opening"></span>
@@ -150,7 +162,7 @@
         </div>
       </section>
 
-      <section class="work-preview" id="work" aria-labelledby="work-title">
+      <section class="work-preview" id="work" aria-labelledby="work-title" data-work-chapter>
         <div class="container">
           <div class="section-heading">
             <p class="eyebrow">Selected work</p>
@@ -159,6 +171,7 @@
           </div>
 
           <a class="project-preview" href="case-study.html" aria-label="Explore the Ashworth and Vale concept project">
+            <span class="project-preview__light" aria-hidden="true"></span>
             <div class="project-preview__image">
               <img src="assets/images/ashworth-home.jpg" alt="Contemporary Ashworth and Vale residential project" width="2000" height="1116" loading="lazy" decoding="async">
               <span>Independent concept project</span>
@@ -181,27 +194,18 @@
             <p>We shape the message, structure, visual system and working experience together—so the finished site makes the quality of your business easier to understand.</p>
           </div>
 
-          <div class="outcome-grid">
-            <article class="outcome-card">
-              <span>01</span>
-              <h3>Recognisable</h3>
-              <p>A distinctive digital identity that feels like your business—not a template with your logo added.</p>
+          <div class="outcome-composition">
+            <article class="outcome-lead">
+              <p class="eyebrow">The commercial outcome</p>
+              <h3>Make the real quality of the business easier to recognise.</h3>
+              <p>A distinctive website should do more than create a good first impression. It should carry proof, remove uncertainty and make the next decision feel straightforward.</p>
+              <span class="outcome-lead__line" aria-hidden="true"></span>
             </article>
-            <article class="outcome-card">
-              <span>02</span>
-              <h3>Reassuring</h3>
-              <p>Proof, process and practical information appear when customers need them, reducing uncertainty without clutter.</p>
-            </article>
-            <article class="outcome-card">
-              <span>03</span>
-              <h3>Useful</h3>
-              <p>Every page has a job. Visitors can understand the offer, assess fit and take the right next step.</p>
-            </article>
-            <article class="outcome-card">
-              <span>04</span>
-              <h3>Built properly</h3>
-              <p>Responsive, accessible and performance-conscious—designed to remain complete when motion or JavaScript is unavailable.</p>
-            </article>
+            <div class="outcome-support">
+              <article><span>01</span><div><h3>Recognisable</h3><p>A digital identity that feels like the business—not a template with a logo added.</p></div></article>
+              <article><span>02</span><div><h3>Reassuring</h3><p>Proof and practical information appear when customers need them, without clutter.</p></div></article>
+              <article><span>03</span><div><h3>Useful and well built</h3><p>Every page has a job, works responsively and remains complete without motion or JavaScript.</p></div></article>
+            </div>
           </div>
         </div>
       </section>
@@ -247,28 +251,50 @@
             <p>Four practical phases take the project from an underperforming website to a tested, launch-ready experience.</p>
           </div>
 
-          <ol class="process-grid">
-            <li>
-              <span>01</span>
-              <h3>See</h3>
-              <p>Understand the business, customers, proof and gap between real quality and online perception.</p>
-            </li>
-            <li>
-              <span>02</span>
-              <h3>Shape</h3>
-              <p>Define the proposition, page journey, content requirements and one clear creative direction.</p>
-            </li>
-            <li>
-              <span>03</span>
-              <h3>Make</h3>
-              <p>Design and build the responsive experience in working form—not as disconnected static mock-ups.</p>
-            </li>
-            <li>
-              <span>04</span>
-              <h3>Prove</h3>
-              <p>Test clarity, accessibility, performance and every enquiry route before launch.</p>
-            </li>
-          </ol>
+          <div class="process-experience" data-process data-process-mode="flow">
+            <div class="process-visual" data-process-visual aria-label="Akari process progress">
+              <div class="process-visual__header"><span>Current stage</span><strong data-process-count>01 / 04</strong></div>
+              <div class="process-map" aria-hidden="true">
+                <span class="process-map__line"><i data-process-line></i></span>
+                <span class="process-node is-active" data-process-node><b>01</b><small>See</small></span>
+                <span class="process-node" data-process-node><b>02</b><small>Shape</small></span>
+                <span class="process-node" data-process-node><b>03</b><small>Make</small></span>
+                <span class="process-node" data-process-node><b>04</b><small>Prove</small></span>
+              </div>
+              <p class="process-visual__output" data-process-output>Evidence becomes a clear starting point.</p>
+            </div>
+
+            <ol class="process-steps">
+              <li class="is-active" data-process-step data-process-index="0">
+                <button type="button" class="process-step__trigger" aria-pressed="true" data-process-control disabled>
+                  <span>01</span><strong>See</strong><small>Focus this stage</small>
+                </button>
+                <p>Understand the business, customers, proof and gap between real quality and online perception.</p>
+                <p class="process-step__result">Evidence becomes a clear starting point.</p>
+              </li>
+              <li data-process-step data-process-index="1">
+                <button type="button" class="process-step__trigger" aria-pressed="false" data-process-control disabled>
+                  <span>02</span><strong>Shape</strong><small>Focus this stage</small>
+                </button>
+                <p>Define the proposition, page journey, content requirements and one clear creative direction.</p>
+                <p class="process-step__result">One proposition becomes an ordered customer journey.</p>
+              </li>
+              <li data-process-step data-process-index="2">
+                <button type="button" class="process-step__trigger" aria-pressed="false" data-process-control disabled>
+                  <span>03</span><strong>Make</strong><small>Focus this stage</small>
+                </button>
+                <p>Design and build the responsive experience in working form—not as disconnected static mock-ups.</p>
+                <p class="process-step__result">The direction becomes a complete responsive experience.</p>
+              </li>
+              <li data-process-step data-process-index="3">
+                <button type="button" class="process-step__trigger" aria-pressed="false" data-process-control disabled>
+                  <span>04</span><strong>Prove</strong><small>Focus this stage</small>
+                </button>
+                <p>Test clarity, accessibility, performance and every enquiry route before launch.</p>
+                <p class="process-step__result">The finished site earns its launch.</p>
+              </li>
+            </ol>
+          </div>
         </div>
       </section>
 
@@ -276,44 +302,45 @@
         <div class="container">
           <div class="section-heading section-heading--stacked">
             <p class="eyebrow">Ways to work together</p>
-            <h2 id="ways-title">Choose the level of support you need.</h2>
-            <p>Final scope is agreed after reviewing your current site, content and goals. These are delivery routes—not rigid templates.</p>
+            <h2 id="ways-title">One focused page—or room to go further.</h2>
+            <p>Two broad routes help start the conversation. Every project is discussed and scoped around the business, its customers and the content the website needs to carry.</p>
           </div>
 
-          <div class="ways-grid">
-            <article class="way-card">
-              <p class="way-card__label">Site handoff</p>
-              <h3>A complete website, ready for your team.</h3>
-              <p>Designed, built and tested files with a clear handoff and defined support boundary.</p>
-              <ul>
-                <li>Strategy and page structure</li>
-                <li>Responsive design and build</li>
-                <li>Content and asset implementation</li>
-                <li>QA and handoff guidance</li>
-              </ul>
-            </article>
-            <article class="way-card way-card--featured">
-              <p class="way-card__label">Ready to launch</p>
-              <h3>From current-site review to a working launch.</h3>
-              <p>The most complete route for a small-business owner who wants Akari to manage the finish line.</p>
-              <ul>
-                <li>Everything in Site handoff</li>
-                <li>Domain and hosting connection</li>
-                <li>Forms and measurement basics</li>
-                <li>Launch QA and initial support</li>
-              </ul>
-            </article>
-            <article class="way-card">
-              <p class="way-card__label">Site + care</p>
-              <h3>Keep the website accurate and useful.</h3>
-              <p>Ongoing support with clearly defined updates, response expectations and improvement reviews.</p>
-              <ul>
-                <li>Content and project updates</li>
-                <li>Form and uptime checks</li>
-                <li>Periodic analytics review</li>
-                <li>Agreed improvement allowance</li>
-              </ul>
-            </article>
+          <div class="route-comparison" data-route-comparison data-route="one-page">
+            <div class="route-options" role="radiogroup" aria-label="Explore website routes">
+              <label class="route-option">
+                <input type="radio" name="website-route" value="one-page" checked data-route-select>
+                <span class="route-option__index">01</span>
+                <span class="route-option__copy"><strong>One-page website</strong><small>One substantial scrolling experience</small></span>
+                <span class="route-option__marker" aria-hidden="true"></span>
+              </label>
+              <label class="route-option">
+                <input type="radio" name="website-route" value="multi-page" data-route-select>
+                <span class="route-option__index">02</span>
+                <span class="route-option__copy"><strong>Multi-page website</strong><small>A connected set of focused pages</small></span>
+                <span class="route-option__marker" aria-hidden="true"></span>
+              </label>
+            </div>
+
+            <div class="route-focus" aria-live="polite">
+              <div class="route-diagram" aria-hidden="true">
+                <span class="route-diagram__page route-diagram__page--one"></span>
+                <span class="route-diagram__page route-diagram__page--two"></span>
+                <span class="route-diagram__page route-diagram__page--three"></span>
+                <span class="route-diagram__page route-diagram__page--four"></span>
+                <span class="route-diagram__line"></span>
+              </div>
+              <div>
+                <p class="eyebrow">Best for</p>
+                <h3 data-route-title>A business with one clear story and one principal enquiry route.</h3>
+                <p data-route-description>Bring the proposition, proof, services and contact into one carefully ordered page.</p>
+              </div>
+            </div>
+
+            <div class="route-facts">
+              <article><h3>One-page website</h3><p>A focused route for a straightforward offer, a concise set of services and one clear customer journey.</p></article>
+              <article><h3>Multi-page website</h3><p>A broader route for multiple services, audiences, locations or substantial proof that needs dedicated space.</p></article>
+            </div>
           </div>
         </div>
       </section>
@@ -403,25 +430,26 @@
               </select>
             </div>
             <div class="form-field">
-              <label for="support">Support level</label>
+              <label for="support">Website route</label>
               <select id="support" name="support">
                 <option value="Not sure">Not sure yet</option>
-                <option value="Site handoff">Site handoff</option>
-                <option value="Ready to launch">Ready to launch</option>
-                <option value="Site + care">Site + care</option>
+                <option value="One-page website">One-page website</option>
+                <option value="Multi-page website">Multi-page website</option>
               </select>
             </div>
 
             <div class="form-field form-field--full">
-              <button class="btn form-submit" type="submit">Prepare my enquiry</button>
-              <p class="form-note">This rolling preview prepares a structured enquiry. Direct email delivery will be connected before the final custom-domain launch.</p>
+              <button class="btn form-submit" type="submit" disabled data-email-submit>Continue in your email app</button>
+              <p class="form-note">This prepares an email in your email application. Nothing is sent until you review and send it there.</p>
+              <p class="form-fallback">Prefer to start directly? Email <a href="mailto:hello@akaristudio.co.uk">hello@akaristudio.co.uk</a>. If no email application opens, your entries will remain here.</p>
+              <noscript><p class="form-note">Email Akari directly using the address above. Email preparation requires JavaScript, but contacting Akari does not.</p></noscript>
             </div>
 
-            <div class="form-result" tabindex="-1" data-form-result hidden>
-              <h3>Your enquiry is ready.</h3>
-              <p>Copy the summary below. Direct delivery is the final external connection still required before launch.</p>
+            <div class="form-result" data-form-result hidden>
+              <h3>Your email details</h3>
+              <p>Nothing has been sent by this website. Your email application should open with the details below for you to review and send.</p>
               <pre data-form-summary></pre>
-              <button class="btn btn--secondary" type="button" data-copy-summary>Copy enquiry</button>
+              <button class="btn btn--secondary" type="button" data-copy-summary>Copy enquiry details</button>
               <span class="copy-status" aria-live="polite" data-copy-status></span>
             </div>
           </form>
@@ -452,7 +480,7 @@
         <div>
           <p class="footer-label">Information</p>
           <a href="privacy.html">Privacy</a>
-          <a href="https://github.com/Renzo-McG/AkariStudio">GitHub</a>
+          <a href="mailto:hello@akaristudio.co.uk">Email Akari</a>
         </div>
       </div>
       <div class="container site-footer__bottom">

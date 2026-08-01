@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Akari Studio — Your quality, brought to light.</title>
+  <desc id="description">A warm, precise Akari Studio social preview featuring the aperture identity and core proposition.</desc>
+  <rect width="1200" height="630" fill="#f5f3ee"/>
+  <circle cx="1020" cy="80" r="330" fill="#dceaff" opacity=".52"/>
+  <rect x="76" y="70" width="68" height="68" rx="14" fill="#14171f"/>
+  <path d="M76 98h40a7 7 0 0 1 0 14H76z" fill="#f5f3ee"/>
+  <rect x="121" y="82" width="5" height="44" rx="2.5" fill="#fff" transform="rotate(16 123.5 104)"/>
+  <text x="166" y="104" fill="#14171f" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="700" letter-spacing="2">AKARI STUDIO</text>
+  <text x="166" y="127" fill="#5b6472" font-family="Inter, Arial, sans-serif" font-size="13">明かり · light / illumination</text>
+  <text x="76" y="274" fill="#2955a3" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="2">WEBSITES FOR AMBITIOUS SMALL BUSINESSES</text>
+  <text x="76" y="355" fill="#14171f" font-family="Inter, Arial, sans-serif" font-size="63" font-weight="700" letter-spacing="-3">Your quality,</text>
+  <text x="76" y="427" fill="#2955a3" font-family="Inter, Arial, sans-serif" font-size="63" font-weight="700" letter-spacing="-3">brought to light.</text>
+  <text x="76" y="502" fill="#5b6472" font-family="Inter, Arial, sans-serif" font-size="22">Thoughtful, distinctive websites that make excellent businesses</text>
+  <text x="76" y="534" fill="#5b6472" font-family="Inter, Arial, sans-serif" font-size="22">easier to recognise, trust and choose.</text>
+  <rect x="76" y="578" width="1048" height="2" rx="1" fill="#e2e6ec"/>
+  <rect x="76" y="578" width="360" height="2" rx="1" fill="#2955a3"/>
+</svg>

@@ -1,14 +1,14 @@
 document.documentElement.classList.remove("no-js");
 
 const header = document.querySelector("[data-header]");
+const headerSentinel = document.querySelector("[data-header-sentinel]");
 
-if (header) {
-  const updateHeader = () => {
-    header.classList.toggle("is-scrolled", window.scrollY > 8);
-  };
+if (header && headerSentinel) {
+  const headerObserver = new IntersectionObserver(([entry]) => {
+    header.classList.toggle("is-scrolled", !entry.isIntersecting);
+  });
 
-  updateHeader();
-  window.addEventListener("scroll", updateHeader, { passive: true });
+  headerObserver.observe(headerSentinel);
 }
 
 const menuToggle = document.querySelector("[data-menu-toggle]");
@@ -52,6 +52,7 @@ const controlLabel = document.querySelector("[data-control-label]");
 const revealStatus = document.querySelector("[data-reveal-status]");
 const evidenceState = document.querySelector("[data-state-evidence]");
 const experienceState = document.querySelector("[data-state-experience]");
+const workChapter = document.querySelector("[data-work-chapter]");
 
 if (
   revealDemo &&
@@ -61,6 +62,15 @@ if (
   evidenceState &&
   experienceState
 ) {
+  let workHasBeenReached = false;
+
+  const updateWorkConnection = () => {
+    document.body.classList.toggle(
+      "is-work-reached",
+      revealDemo.classList.contains("is-composed") && workHasBeenReached
+    );
+  };
+
   revealControl.addEventListener("click", () => {
     const isComposed = revealDemo.classList.toggle("is-composed");
 
@@ -72,6 +82,136 @@ if (
     revealStatus.textContent = isComposed
       ? "The work, reputation and proof now form one experience people can understand and trust."
       : "The ingredients are strong. The experience brings them together.";
+    updateWorkConnection();
+  });
+
+  if (workChapter) {
+    const workObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) workHasBeenReached = true;
+        updateWorkConnection();
+      },
+      { threshold: 0.12 }
+    );
+
+    workObserver.observe(workChapter);
+  }
+}
+
+const process = document.querySelector("[data-process]");
+
+if (process) {
+  const controls = [...process.querySelectorAll("[data-process-control]")];
+  const steps = [...process.querySelectorAll("[data-process-step]")];
+  const nodes = [...process.querySelectorAll("[data-process-node]")];
+  const visual = process.querySelector("[data-process-visual]");
+  const count = process.querySelector("[data-process-count]");
+  const output = process.querySelector("[data-process-output]");
+  const line = process.querySelector("[data-process-line]");
+  const headerElement = document.querySelector("[data-header]");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let activeIndex = 0;
+  let manualUntil = 0;
+
+  controls.forEach((control) => {
+    control.disabled = false;
+  });
+
+  const setActiveProcessStep = (index, source = "observer") => {
+    if (source === "observer" && Date.now() < manualUntil) return;
+    activeIndex = Math.max(0, Math.min(index, steps.length - 1));
+
+    steps.forEach((step, stepIndex) => {
+      const isActive = stepIndex === activeIndex;
+      step.classList.toggle("is-active", isActive);
+      controls[stepIndex].setAttribute("aria-pressed", String(isActive));
+    });
+
+    nodes.forEach((node, nodeIndex) => {
+      node.classList.toggle("is-active", nodeIndex === activeIndex);
+      node.classList.toggle("is-complete", nodeIndex < activeIndex || reducedMotion.matches);
+    });
+
+    process.style.setProperty("--process-progress", reducedMotion.matches ? "1" : String(activeIndex / (steps.length - 1)));
+    if (line) line.style.transform = "scaleX(var(--process-progress))";
+    if (count) count.textContent = `${String(activeIndex + 1).padStart(2, "0")} / 04`;
+    if (output) output.textContent = steps[activeIndex].querySelector(".process-step__result").textContent;
+  };
+
+  const updateProcessMode = () => {
+    const wideEnough = window.matchMedia("(min-width: 1100px)").matches;
+    const tallEnough = window.matchMedia("(min-height: 760px)").matches;
+    const headerHeight = headerElement ? headerElement.getBoundingClientRect().height : 0;
+    const stickyTop = headerHeight + 24;
+    const availableHeight = window.innerHeight - stickyTop - 32;
+    process.dataset.processMode = "measure";
+    const visualHeight = visual ? visual.getBoundingClientRect().height : Number.POSITIVE_INFINITY;
+    const naturalThresholds = steps.length === 4 && process.scrollHeight > visualHeight + 420;
+    const canStick = wideEnough && tallEnough && visualHeight <= availableHeight && naturalThresholds;
+
+    process.dataset.processMode = canStick ? "sticky" : "flow";
+  };
+
+  controls.forEach((control, index) => {
+    control.addEventListener("click", () => {
+      manualUntil = Date.now() + 900;
+      setActiveProcessStep(index, "control");
+    });
+
+    control.addEventListener("focus", () => {
+      manualUntil = Date.now() + 900;
+      setActiveProcessStep(index, "control");
+    });
+  });
+
+  const processObserver = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setActiveProcessStep(steps.indexOf(visible.target));
+    },
+    { rootMargin: "-24% 0px -48% 0px", threshold: [0.15, 0.35, 0.6] }
+  );
+
+  steps.forEach((step) => processObserver.observe(step));
+  window.addEventListener("resize", updateProcessMode);
+  reducedMotion.addEventListener("change", () => setActiveProcessStep(activeIndex, "control"));
+  updateProcessMode();
+  setActiveProcessStep(0, "control");
+}
+
+const routeComparison = document.querySelector("[data-route-comparison]");
+
+if (routeComparison) {
+  const routeInputs = [...routeComparison.querySelectorAll("[data-route-select]")];
+  const routeTitle = routeComparison.querySelector("[data-route-title]");
+  const routeDescription = routeComparison.querySelector("[data-route-description]");
+  const routeContent = {
+    "one-page": {
+      title: "A business with one clear story and one principal enquiry route.",
+      description: "Bring the proposition, proof, services and contact into one carefully ordered page.",
+    },
+    "multi-page": {
+      title: "A business with more services, audiences or proof to explore.",
+      description: "Give distinct customer questions dedicated space while keeping the whole journey connected.",
+    },
+  };
+
+  const updateRoute = (value) => {
+    const content = routeContent[value];
+    if (!content) return;
+    routeComparison.dataset.route = value;
+    routeTitle.textContent = content.title;
+    routeDescription.textContent = content.description;
+  };
+
+  routeInputs.forEach((input) => {
+    input.addEventListener("change", () => updateRoute(input.value));
+    input.addEventListener("focus", () => {
+      input.checked = true;
+      updateRoute(input.value);
+    });
   });
 }
 
@@ -170,6 +310,9 @@ if (projectForm) {
   const summary = projectForm.querySelector("[data-form-summary]");
   const copyButton = projectForm.querySelector("[data-copy-summary]");
   const copyStatus = projectForm.querySelector("[data-copy-status]");
+  const emailSubmit = projectForm.querySelector("[data-email-submit]");
+
+  if (emailSubmit) emailSubmit.disabled = false;
 
   const setError = (field, message) => {
     field.setAttribute("aria-invalid", String(Boolean(message)));
@@ -205,24 +348,35 @@ if (projectForm) {
     if (!validate()) return;
 
     const values = new FormData(projectForm);
+    const businessName = values.get("business").trim();
+    const intent = values.get("intent") === "review" ? "Current-site review" : "Website project";
     const preparedSummary = [
-      "AKARI STUDIO — PROJECT ENQUIRY",
+      "Hello Akari Studio,",
       "",
-      `Intent: ${values.get("intent")}`,
-      `Name: ${values.get("name")}`,
-      `Email: ${values.get("email")}`,
-      `Business: ${values.get("business")}`,
-      `Website: ${values.get("website") || "Not supplied"}`,
-      `Timing: ${values.get("timing")}`,
-      `Support: ${values.get("support")}`,
+      "I would like to start a conversation about my website.",
+      "",
+      `Enquiry: ${intent}`,
+      `Name: ${values.get("name").trim()}`,
+      `Reply email: ${values.get("email").trim()}`,
+      `Business: ${businessName}`,
+      `Current website: ${values.get("website")?.trim() || "Not supplied"}`,
+      `Ideal timing: ${values.get("timing")}`,
+      `Website route: ${values.get("support")}`,
       "",
       "What the current site is not communicating:",
-      values.get("gap"),
+      values.get("gap").trim(),
+      "",
+      "Kind regards,",
+      values.get("name").trim(),
     ].join("\n");
 
     summary.textContent = preparedSummary;
     result.hidden = false;
-    result.focus();
+    copyStatus.textContent = "";
+
+    const subject = `Project enquiry — ${businessName || "Akari Studio"}`;
+    const emailHref = `mailto:hello@akaristudio.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(preparedSummary)}`;
+    window.location.href = emailHref;
   });
 
   projectForm.querySelectorAll("input, textarea").forEach((field) => {
@@ -234,7 +388,7 @@ if (projectForm) {
   copyButton.addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(summary.textContent);
-      copyStatus.textContent = "Copied.";
+      copyStatus.textContent = "Copied to clipboard.";
     } catch {
       copyStatus.textContent = "Select the summary and copy it manually.";
     }
