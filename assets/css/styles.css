@@ -1711,25 +1711,47 @@ body.is-work-reached .project-preview__light {
   box-shadow: 0 28px 70px rgb(20 23 31 / 8%);
 }
 
+.route-instruction {
+  padding: var(--space-4) var(--space-5) 0;
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .route-options {
   display: grid;
+  padding: var(--space-4) var(--space-5) var(--space-5);
   grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
   border-bottom: 1px solid var(--color-border);
 }
 
 .route-option {
   position: relative;
   display: grid;
-  min-height: 118px;
-  padding: var(--space-4) var(--space-5);
-  grid-template-columns: 38px 1fr;
+  min-height: 108px;
+  padding: var(--space-4);
+  grid-template-columns: 26px 1fr 20px;
   gap: var(--space-3);
   align-items: center;
+  overflow: hidden;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: #fff;
   cursor: pointer;
+  transition:
+    border-color var(--motion-micro) var(--ease-interface),
+    background-color var(--motion-micro) var(--ease-interface),
+    box-shadow var(--motion-micro) var(--ease-interface),
+    transform var(--motion-micro) var(--ease-luminous);
 }
 
-.route-option + .route-option {
-  border-left: 1px solid var(--color-border);
+.route-option:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 10px 26px rgb(20 23 31 / 8%);
+  transform: translateY(-2px);
 }
 
 .route-option input {
@@ -1741,22 +1763,62 @@ body.is-work-reached .project-preview__light {
 
 .route-option:has(input:focus-visible) {
   outline: 3px solid rgb(41 85 163 / 42%);
-  outline-offset: -5px;
+  outline-offset: 2px;
+}
+
+/* Visible selection marker: a real radio dot, not colour alone */
+.route-option__marker {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #b9c2d0;
+  border-radius: 50%;
+  transition:
+    border-color var(--motion-micro) var(--ease-interface),
+    background-color var(--motion-micro) var(--ease-interface);
+}
+
+.route-option__marker::after {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  background: #fff;
+  content: "";
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.4);
+  transition:
+    opacity var(--motion-micro) var(--ease-interface),
+    transform var(--motion-micro) var(--ease-luminous);
+}
+
+.route-option:has(input:checked) .route-option__marker {
+  border-color: var(--color-accent-hover);
+  background: var(--color-accent-hover);
+}
+
+.route-option:has(input:checked) .route-option__marker::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .route-option__index {
+  display: block;
   color: var(--color-accent);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
+  letter-spacing: 0.1em;
 }
 
 .route-option__copy {
   display: grid;
-  gap: 5px;
+  gap: 3px;
 }
 
 .route-option__copy strong {
-  font-size: 21px;
+  font-size: 20px;
 }
 
 .route-option__copy small {
@@ -1764,19 +1826,52 @@ body.is-work-reached .project-preview__light {
   font-size: 13px;
 }
 
-.route-option__marker {
+.route-option__chevron {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  color: #b9c2d0;
+  transition:
+    color var(--motion-micro) var(--ease-interface),
+    transform var(--motion-micro) var(--ease-luminous);
+}
+
+.route-option__chevron svg {
+  width: 100%;
+  height: 100%;
+}
+
+.route-option:hover .route-option__chevron {
+  color: var(--color-accent);
+  transform: translateX(2px);
+}
+
+/* Selected state is signalled by border weight, background tint, the
+   filled radio and the underline, not by colour alone. */
+.route-option:has(input:checked) {
+  border-color: var(--color-accent-hover);
+  background: #f7f9fd;
+}
+
+.route-option:has(input:checked) .route-option__chevron {
+  color: var(--color-accent-hover);
+}
+
+.route-option__underline {
   position: absolute;
   height: 3px;
-  right: var(--space-5);
-  bottom: -1px;
-  left: var(--space-5);
-  background: var(--color-accent);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--color-accent-hover);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--motion-state) var(--ease-luminous);
 }
 
-.route-option:has(input:checked) .route-option__marker {
+.route-option:has(input:checked) .route-option__underline {
   transform: scaleX(1);
 }
 
@@ -1903,61 +1998,74 @@ body.is-work-reached .project-preview__light {
   transform: scaleX(1);
 }
 
-.route-facts {
+/* ------------------------------------------------------------------
+   Fit check: paired card composition
+   ------------------------------------------------------------------ */
+
+.fit-pair {
   display: grid;
+  margin-top: var(--space-6);
   grid-template-columns: 1fr 1fr;
-  border-top: 1px solid var(--color-border);
+  gap: var(--space-4);
 }
 
-.route-facts article {
-  padding: var(--space-5);
+.fit-card {
+  min-height: 340px;
 }
 
-.route-facts article + article {
-  border-left: 1px solid var(--color-border);
+.fit-card .shift-card__body {
+  padding-top: var(--space-4);
 }
 
-.route-facts h3 {
-  font-size: 19px;
+.fit-card .shift-card__body h3 {
+  font-size: 21px;
 }
 
-.route-facts p {
-  margin-top: var(--space-2);
+.fit-card--no .shift-card__icon,
+.fit-card--no .shift-card__index {
+  color: var(--color-muted);
+}
+
+.fit-card__list {
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fit-card__list li {
+  position: relative;
+  padding-left: var(--space-4);
+  padding-block: 7px;
   color: var(--color-muted);
   font-size: 15px;
+  transition: color var(--motion-state) var(--ease-interface);
 }
 
-.fit-grid {
-  display: grid;
-  grid-template-columns: 0.8fr 1fr 1fr;
-  gap: 64px;
+/* Restrained Akari line detail, not a tick or cross */
+.fit-card__list li::before {
+  position: absolute;
+  width: 8px;
+  height: 1.5px;
+  left: 0;
+  top: 17px;
+  background: var(--color-accent);
+  content: "";
+  transition: background-color var(--motion-state) var(--ease-interface);
 }
 
-.fit-grid h2 {
-  margin-top: 18px;
+.fit-card--no .fit-card__list li::before {
+  width: 8px;
+  background: #b9c2d0;
 }
 
-.fit-list {
-  padding-left: 34px;
-  border-left: 2px solid var(--color-accent);
-}
+@media (hover: hover) and (pointer: fine) {
+  .fit-card:hover .fit-card__list li {
+    color: #d7e3f7;
+  }
 
-.fit-list--muted {
-  border-left-color: #adb3bc;
-}
-
-.fit-list h3 {
-  font-size: 18px;
-}
-
-.fit-list ul {
-  margin: 18px 0 0;
-  padding-left: 20px;
-}
-
-.fit-list li {
-  padding-block: 6px;
-  color: var(--color-muted);
+  .fit-card:hover .fit-card__list li::before {
+    background: var(--color-light);
+  }
 }
 
 .contact-section {
@@ -2302,32 +2410,29 @@ body.is-work-reached .project-preview__light {
 }
 
 .journey-list {
+  display: grid;
   margin: 56px 0 0;
   padding: 0;
-  border-top: 1px solid var(--color-border);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
   list-style: none;
+  counter-reset: none;
 }
 
-.journey-list li {
-  display: grid;
-  padding: 28px 0;
-  grid-template-columns: 70px 0.55fr 1fr;
-  border-bottom: 1px solid var(--color-border);
-  align-items: baseline;
+/* Sequential connection between the four stages */
+.journey-list .shift-card::after {
+  position: absolute;
+  z-index: 2;
+  width: var(--space-4);
+  height: 1px;
+  top: calc(var(--space-4) + 17px);
+  right: calc(var(--space-4) * -1);
+  background: var(--color-border);
+  content: "";
 }
 
-.journey-list li > span {
-  color: var(--color-accent);
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.journey-list li > div {
-  display: contents;
-}
-
-.journey-list p {
-  color: var(--color-muted);
+.journey-list .shift-card:last-child::after {
+  display: none;
 }
 
 .evidence-workspace {
@@ -2390,17 +2495,32 @@ body.is-work-reached .project-preview__light {
   display: none;
 }
 
-.evidence-panel__image {
+/* ------------------------------------------------------------------
+   Evidence media: bounded, ratio-controlled project photography.
+   The previous rule set width:100% without height:auto, so the img
+   height attribute (e.g. 1071) became the literal CSS height and the
+   media rendered ~119-127% of viewport height at every breakpoint.
+   ------------------------------------------------------------------ */
+
+.evidence-media {
   position: relative;
   overflow: hidden;
   border-radius: 8px;
   background: var(--color-bg-alt);
 }
 
-.evidence-panel__image img {
+.evidence-media picture {
+  display: block;
+}
+
+.evidence-media img {
+  display: block;
   width: 100%;
-  min-height: 430px;
+  height: auto;
+  max-height: 460px;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+  object-position: center;
 }
 
 .evidence-panel > div:last-child h3 {
@@ -2465,21 +2585,18 @@ body.is-work-reached .project-preview__light {
   gap: 28px;
 }
 
-.move-grid article {
+.move-grid .shift-card {
   min-height: 300px;
-  padding: 34px;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
 }
 
-.move-grid h3 {
-  margin-top: 74px;
-  font-size: 24px;
+.move-grid .shift-card__icon {
+  width: 44px;
+  height: 36px;
 }
 
-.move-grid p {
-  margin-top: 14px;
-  color: var(--color-muted);
+.move-grid .shift-card__body {
+  margin-top: auto;
+  padding-top: var(--space-6);
 }
 
 .transformation-grid {
@@ -2613,10 +2730,7 @@ body.is-work-reached .project-preview__light {
 }
 
 .responsive-proof {
-  display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.62fr);
-  gap: clamp(58px, 9vw, 130px);
-  align-items: center;
+  display: block;
 }
 
 .responsive-proof__copy h2 {
@@ -2631,80 +2745,318 @@ body.is-work-reached .project-preview__light {
 }
 
 .proof-decisions {
-  margin: var(--space-6) 0 var(--space-5);
+  display: grid;
+  margin: var(--space-6) 0 var(--space-7);
   padding: 0;
-  border-top: 1px solid var(--color-border);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
   list-style: none;
 }
 
-.proof-decisions li {
+/* ------------------------------------------------------------------
+   Reusable contrast-shift card treatment
+   Used by: .journey-list li, .move-grid article,
+            .proof-decisions li, .fit-card
+   ------------------------------------------------------------------ */
+
+.shift-card {
+  position: relative;
   display: grid;
-  padding-block: var(--space-4);
-  grid-template-columns: 42px 1fr;
-  gap: var(--space-3);
-  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-4) var(--space-5);
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "index icon"
+    "body  body";
+  gap: var(--space-2) var(--space-3);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: #fff;
+  transition:
+    background-color var(--motion-state) var(--ease-interface),
+    border-color var(--motion-state) var(--ease-interface),
+    transform var(--motion-state) var(--ease-luminous),
+    box-shadow var(--motion-state) var(--ease-interface);
 }
 
-.proof-decisions li > span {
+.shift-card--block {
+  padding: var(--space-5);
+  grid-template-areas:
+    "icon  index"
+    "body  body";
+  align-content: start;
+}
+
+.shift-card__index {
+  grid-area: index;
+  align-self: center;
   color: var(--color-accent);
   font-size: 12px;
   font-weight: 700;
+  letter-spacing: 0.08em;
+  transition: color var(--motion-state) var(--ease-interface);
 }
 
-.proof-decisions strong {
-  font-size: 18px;
+.shift-card--block .shift-card__index {
+  justify-self: end;
 }
 
-.proof-decisions p {
-  margin-top: 5px;
+.shift-card__icon {
+  display: flex;
+  grid-area: icon;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  transition: color var(--motion-state) var(--ease-interface);
+}
+
+.shift-card__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.shift-card__body {
+  grid-area: body;
+  margin-top: var(--space-2);
+}
+
+.shift-card__body h3,
+.shift-card__body strong {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  transition: color var(--motion-state) var(--ease-interface);
+}
+
+.shift-card--block .shift-card__body h3 {
+  font-size: 22px;
+}
+
+.shift-card__body p {
+  margin-top: var(--space-2);
   color: var(--color-muted);
   font-size: 15px;
+  transition: color var(--motion-state) var(--ease-interface);
 }
 
-.mobile-proof {
-  max-width: 390px;
-  margin: 0 auto;
-}
-
-.mobile-proof__frame {
-  position: relative;
-  padding: 12px;
-  border: 1px solid #cfd5df;
-  border-radius: 30px;
-  background: #11151d;
-  box-shadow: 0 34px 80px rgb(20 23 31 / 20%);
-}
-
-.mobile-proof__frame img {
-  width: 100%;
-  border-radius: 20px;
-  aspect-ratio: 390 / 844;
-  object-fit: cover;
-  object-position: top;
-}
-
-.mobile-proof__bar {
+/* The restrained line that completes on the active state */
+.shift-card__line {
   position: absolute;
-  z-index: 1;
-  width: 78px;
-  height: 20px;
-  left: 50%;
-  top: 18px;
-  border-radius: var(--radius-pill);
-  background: #11151d;
-  transform: translateX(-50%);
+  height: 2px;
+  right: var(--space-5);
+  bottom: 0;
+  left: var(--space-5);
+  background: var(--color-light);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-state) var(--ease-luminous);
 }
 
-.mobile-proof figcaption {
+/* Pointer devices only: hover is a non-essential enhancement */
+@media (hover: hover) and (pointer: fine) {
+  .shift-card:hover,
+  .shift-card:focus-within {
+    border-color: var(--color-accent-hover);
+    background: var(--color-accent-hover);
+    box-shadow: 0 18px 44px rgb(20 23 31 / 16%);
+    transform: translateY(-3px);
+  }
+
+  .shift-card:hover .shift-card__body h3,
+  .shift-card:hover .shift-card__body strong,
+  .shift-card:focus-within .shift-card__body h3,
+  .shift-card:focus-within .shift-card__body strong {
+    color: #fff;
+  }
+
+  .shift-card:hover .shift-card__body p,
+  .shift-card:focus-within .shift-card__body p {
+    color: #d7e3f7;
+  }
+
+  .shift-card:hover .shift-card__index,
+  .shift-card:hover .shift-card__icon,
+  .shift-card:focus-within .shift-card__index,
+  .shift-card:focus-within .shift-card__icon {
+    color: var(--color-light);
+  }
+
+  .shift-card:hover .shift-card__line,
+  .shift-card:focus-within .shift-card__line {
+    transform: scaleX(1);
+  }
+}
+
+/* Resting-state hierarchy that carries the design without hover.
+   Applied to touch/coarse input and to narrow widths alike, so a
+   small window on a pointer device gets the same standalone design. */
+@media (hover: none), (pointer: coarse), (max-width: 720px) {
+  .shift-card {
+    border-left: 3px solid var(--color-accent);
+  }
+
+  .shift-card__line {
+    transform: scaleX(0.34);
+    background: var(--color-accent);
+    opacity: 0.35;
+  }
+
+  .fit-card--no {
+    border-left-color: #b9c2d0;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Responsive preview module (live embed at selectable widths)
+   ------------------------------------------------------------------ */
+
+.viewport-demo {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-feature);
+  background: #fff;
+  box-shadow: 0 28px 70px rgb(20 23 31 / 8%);
+}
+
+.viewport-demo__bar {
   display: flex;
-  margin-top: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
   justify-content: space-between;
-  color: var(--color-muted);
-  font-size: 12px;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-alt);
 }
 
-.mobile-proof figcaption strong {
-  color: var(--color-ink);
+/* Without JavaScript the width controls cannot work, so they are not
+   offered at all. The embed and the live link still function. */
+.no-js .viewport-demo__bar,
+.no-js .viewport-demo__handle {
+  display: none;
+}
+
+.viewport-demo__presets {
+  display: flex;
+  gap: 6px;
+}
+
+.viewport-demo__presets button {
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: #fff;
+  color: var(--color-muted);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    background-color var(--motion-micro) var(--ease-interface),
+    border-color var(--motion-micro) var(--ease-interface),
+    color var(--motion-micro) var(--ease-interface);
+}
+
+.viewport-demo__presets button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.viewport-demo__presets button[aria-pressed="true"] {
+  border-color: var(--color-accent-hover);
+  background: var(--color-accent-hover);
+  color: #fff;
+}
+
+.viewport-demo__readout {
+  color: var(--color-muted);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.viewport-demo__stage {
+  display: flex;
+  padding: var(--space-5) var(--space-4);
+  justify-content: center;
+  background:
+    linear-gradient(180deg, var(--color-bg-warm), #fff);
+}
+
+.viewport-demo__viewport {
+  position: relative;
+  width: min(100%, var(--preview-width, 1280px));
+  transition: width var(--motion-state) var(--ease-luminous);
+}
+
+.viewport-demo__viewport iframe {
+  display: block;
+  width: 100%;
+  height: clamp(360px, 52vh, 560px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: #fff;
+  box-shadow: 0 16px 40px rgb(20 23 31 / 12%);
+}
+
+.viewport-demo__handle {
+  position: absolute;
+  display: none;
+  width: 22px;
+  top: 0;
+  right: -11px;
+  bottom: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: ew-resize;
+  touch-action: none;
+}
+
+.viewport-demo__handle span {
+  position: absolute;
+  width: 6px;
+  height: 54px;
+  left: 50%;
+  top: 50%;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  opacity: 0.42;
+  transform: translate(-50%, -50%);
+  transition: opacity var(--motion-micro) var(--ease-interface);
+}
+
+.viewport-demo__handle:hover span,
+.viewport-demo__handle:focus-visible span {
+  opacity: 1;
+}
+
+.viewport-demo.is-resizing {
+  user-select: none;
+}
+
+.viewport-demo__note {
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 14px;
+}
+
+.viewport-demo__note .text-link {
+  margin-left: var(--space-2);
+}
+
+.viewport-demo__fallback {
+  margin-top: var(--space-5);
+}
+
+/* The drag handle is a pointer-only enhancement; presets remain the
+   accessible, keyboard-operable control in every case. */
+@media (hover: hover) and (pointer: fine) and (min-width: 1100px) {
+  .viewport-demo__handle {
+    display: block;
+  }
 }
 
 .case-resolution__inner {
@@ -2847,13 +3199,16 @@ body.is-work-reached .project-preview__light {
     margin-top: 0;
   }
 
-  .fit-grid {
+  .journey-list {
     grid-template-columns: 1fr 1fr;
   }
 
-  .fit-grid > div:first-child {
-    grid-column: 1 / -1;
-    max-width: 720px;
+  .journey-list .shift-card:nth-child(2)::after {
+    display: none;
+  }
+
+  .proof-decisions {
+    grid-template-columns: 1fr;
   }
 
   .contact-grid {
@@ -2873,7 +3228,11 @@ body.is-work-reached .project-preview__light {
     grid-template-columns: 1fr;
   }
 
-  .evidence-panel__image img,
+  .evidence-media img {
+    max-height: 380px;
+    aspect-ratio: 16 / 9;
+  }
+
   .system-diagram {
     min-height: 360px;
   }
@@ -3165,7 +3524,6 @@ body.is-work-reached .project-preview__light {
 
   .outcome-grid,
   .process-grid,
-  .fit-grid,
   .contact-grid,
   .premise-grid,
   .move-grid,
@@ -3242,26 +3600,22 @@ body.is-work-reached .project-preview__light {
   }
 
   .route-options,
-  .route-focus,
-  .route-facts {
+  .route-focus {
     grid-template-columns: 1fr;
   }
 
+  .route-options {
+    padding: var(--space-3) var(--space-4) var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .route-instruction {
+    padding: var(--space-4) var(--space-4) 0;
+  }
+
   .route-option {
-    min-height: 104px;
-    padding: 22px;
-  }
-
-  .route-option + .route-option,
-  .route-facts article + article {
-    border-left: 0;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .route-option__marker {
-    right: 22px;
-    bottom: 0;
-    left: 22px;
+    min-height: 88px;
+    padding: 20px;
   }
 
   .route-focus {
@@ -3285,10 +3639,6 @@ body.is-work-reached .project-preview__light {
   .route-comparison[data-route="multi-page"] .route-diagram__page--three,
   .route-comparison[data-route="multi-page"] .route-diagram__page--four {
     top: 112px;
-  }
-
-  .route-facts article {
-    padding: 24px;
   }
 
   .transfer-grid {
@@ -3333,8 +3683,12 @@ body.is-work-reached .project-preview__light {
     margin-top: 24px;
   }
 
-  .fit-list {
-    padding-left: 24px;
+  .fit-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .fit-card {
+    min-height: 0;
   }
 
   .project-form {
@@ -3447,7 +3801,11 @@ body.is-work-reached .project-preview__light {
     background: #171b23;
   }
 
-  .evidence-panel__image img,
+  .evidence-media img {
+    max-height: 300px;
+    aspect-ratio: 4 / 3;
+  }
+
   .system-diagram {
     min-height: 260px;
   }
@@ -3466,8 +3824,12 @@ body.is-work-reached .project-preview__light {
     gap: 16px;
   }
 
-  .move-grid article {
-    min-height: 230px;
+  .move-grid .shift-card {
+    min-height: 0;
+  }
+
+  .move-grid .shift-card__body {
+    padding-top: var(--space-5);
   }
 
   .transformation-grid {
@@ -3482,19 +3844,34 @@ body.is-work-reached .project-preview__light {
     gap: 32px;
   }
 
-  .responsive-proof {
+  .journey-list,
+  .proof-decisions {
     grid-template-columns: 1fr;
-    gap: 48px;
   }
 
-  .mobile-proof {
-    width: min(100%, 340px);
+  .journey-list .shift-card::after {
+    display: none;
   }
 
-  .mobile-proof figcaption {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 4px;
+  .viewport-demo__bar {
+    padding: var(--space-3);
+  }
+
+  .viewport-demo__presets {
+    width: 100%;
+  }
+
+  .viewport-demo__presets button {
+    flex: 1;
+    padding: 0 var(--space-2);
+  }
+
+  .viewport-demo__stage {
+    padding: var(--space-3);
+  }
+
+  .viewport-demo__viewport iframe {
+    height: clamp(300px, 46vh, 420px);
   }
 }
 
@@ -3516,7 +3893,28 @@ body.is-work-reached .project-preview__light {
   .work-preview::before,
   .project-preview__light,
   .process-map__line i,
-  .route-option__marker {
+  .route-option__underline,
+  .shift-card,
+  .shift-card__line,
+  .viewport-demo__viewport {
+    transition: none;
+  }
+
+  /* Reduced motion receives the composed state, not the travel */
+  .shift-card:hover,
+  .shift-card:focus-within {
+    transform: none;
+  }
+
+  .shift-card__line {
+    transform: scaleX(1);
+  }
+
+  .route-option:hover {
+    transform: none;
+  }
+
+  .route-option__underline {
     transition: none;
   }
 
