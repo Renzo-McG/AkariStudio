@@ -274,6 +274,14 @@ if (beforeAfter && beforeAfterInput) {
     beforeAfter.style.setProperty("--position", `${beforeAfterInput.value}%`);
   };
 
+  // Retire the "this is draggable" hint permanently once it has served
+  // its purpose. The comparison itself is unaffected either way.
+  const retireHint = () => beforeAfter.classList.add("is-engaged");
+
+  ["pointerdown", "input", "focus"].forEach((type) => {
+    beforeAfterInput.addEventListener(type, retireHint, { once: true });
+  });
+
   beforeAfterInput.addEventListener("input", updateBeforeAfter);
   beforeAfterInput.addEventListener("keydown", (event) => {
     const current = Number(beforeAfterInput.value);

@@ -2672,6 +2672,7 @@ body.is-work-reached .project-preview__light {
 
 .before-after__divider::after {
   position: absolute;
+  z-index: 1;
   display: grid;
   width: 44px;
   height: 44px;
@@ -2684,6 +2685,45 @@ body.is-work-reached .project-preview__light {
   content: "↔";
   font-weight: 700;
   transform: translate(-50%, -50%);
+}
+
+/* A quiet luminous pulse so the control reads as grabbable before it is
+   touched. It carries no information, and it stops for good once the
+   visitor engages with the comparison. */
+.before-after__divider::before {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  left: 50%;
+  top: 50%;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  content: "";
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  animation: before-after-hint 2600ms var(--ease-luminous) 900ms infinite;
+}
+
+.before-after.is-engaged .before-after__divider::before {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes before-after-hint {
+  0% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  70% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.85);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.85);
+  }
 }
 
 .before-after__label {
@@ -3047,8 +3087,8 @@ body.is-work-reached .project-preview__light {
   margin-left: var(--space-2);
 }
 
-.viewport-demo__fallback {
-  margin-top: var(--space-5);
+.responsive-proof__link {
+  display: none;
 }
 
 /* The drag handle is a pointer-only enhancement; presets remain the
@@ -3853,25 +3893,45 @@ body.is-work-reached .project-preview__light {
     display: none;
   }
 
-  .viewport-demo__bar {
-    padding: var(--space-3);
+  /* The width demonstration cannot demonstrate anything inside a phone
+     viewport, because the preview can never be wider than the screen
+     showing it. It is removed here rather than shown as a token. The
+     explanatory copy, the three decision cards and a direct link to the
+     live concept all remain. */
+  .viewport-demo {
+    display: none;
   }
 
-  .viewport-demo__presets {
-    width: 100%;
+  .responsive-proof__link {
+    display: inline-flex;
+    margin-top: var(--space-5);
   }
 
-  .viewport-demo__presets button {
-    flex: 1;
-    padding: 0 var(--space-2);
+  /* Filled cards at narrow widths, where there is no hover state to
+     carry the contrast and a white card on a white section reads flat. */
+  .move-grid .shift-card {
+    border-color: var(--color-accent-hover);
+    border-left-width: 1px;
+    background: var(--color-accent-hover);
   }
 
-  .viewport-demo__stage {
-    padding: var(--space-3);
+  .move-grid .shift-card__body h3 {
+    color: #fff;
   }
 
-  .viewport-demo__viewport iframe {
-    height: clamp(300px, 46vh, 420px);
+  .move-grid .shift-card__body p {
+    color: #d7e3f7;
+  }
+
+  .move-grid .shift-card__index,
+  .move-grid .shift-card__icon {
+    color: var(--color-light);
+  }
+
+  .move-grid .shift-card__line {
+    background: var(--color-light);
+    opacity: 0.5;
+    transform: scaleX(1);
   }
 }
 
@@ -3885,8 +3945,14 @@ body.is-work-reached .project-preview__light {
 
   body.is-illuminated .brand-mark__light,
   .reveal-demo.is-composed .reveal-stage__beam,
-  .case-hero__image::after {
+  .case-hero__image::after,
+  .before-after__divider::before {
     animation: none;
+  }
+
+  /* The drag hint is decorative; without motion it simply is not shown. */
+  .before-after__divider::before {
+    opacity: 0;
   }
 
   .brand-line__rule::after,
