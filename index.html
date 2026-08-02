@@ -20,8 +20,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css?v=20260801-1">
-    <script src="assets/js/main.js?v=20260801-1" defer></script>
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260802-1">
+    <script src="assets/js/main.js?v=20260802-1" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -307,18 +307,33 @@
           </div>
 
           <div class="route-comparison" data-route-comparison data-route="one-page">
-            <div class="route-options" role="radiogroup" aria-label="Explore website routes">
+            <p class="route-instruction" id="route-instruction">Choose a route to explore</p>
+            <div class="route-options" role="radiogroup" aria-label="Explore website routes" aria-describedby="route-instruction">
               <label class="route-option">
                 <input type="radio" name="website-route" value="one-page" checked data-route-select>
-                <span class="route-option__index">01</span>
-                <span class="route-option__copy"><strong>One-page website</strong><small>One substantial scrolling experience</small></span>
                 <span class="route-option__marker" aria-hidden="true"></span>
+                <span class="route-option__copy">
+                  <span class="route-option__index">01</span>
+                  <strong>One-page website</strong>
+                  <small>One substantial scrolling experience</small>
+                </span>
+                <span class="route-option__chevron" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M6 3.5L10.5 8 6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span class="route-option__underline" aria-hidden="true"></span>
               </label>
               <label class="route-option">
                 <input type="radio" name="website-route" value="multi-page" data-route-select>
-                <span class="route-option__index">02</span>
-                <span class="route-option__copy"><strong>Multi-page website</strong><small>A connected set of focused pages</small></span>
                 <span class="route-option__marker" aria-hidden="true"></span>
+                <span class="route-option__copy">
+                  <span class="route-option__index">02</span>
+                  <strong>Multi-page website</strong>
+                  <small>A connected set of focused pages</small>
+                </span>
+                <span class="route-option__chevron" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M6 3.5L10.5 8 6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span class="route-option__underline" aria-hidden="true"></span>
               </label>
             </div>
 
@@ -336,38 +351,50 @@
                 <p data-route-description>Bring the proposition, proof, services and contact into one carefully ordered page.</p>
               </div>
             </div>
-
-            <div class="route-facts">
-              <article><h3>One-page website</h3><p>A focused route for a straightforward offer, a concise set of services and one clear customer journey.</p></article>
-              <article><h3>Multi-page website</h3><p>A broader route for multiple services, audiences, locations or substantial proof that needs dedicated space.</p></article>
-            </div>
           </div>
         </div>
       </section>
 
       <section class="fit-section section-alt" aria-labelledby="fit-title">
-        <div class="container fit-grid">
-          <div>
+        <div class="container">
+          <div class="section-heading section-heading--stacked">
             <p class="eyebrow">A useful fit check</p>
             <h2 id="fit-title">Best for businesses with something real to reveal.</h2>
+            <p>Akari is deliberately not for everyone. Reading both columns should make the answer straightforward either way.</p>
           </div>
-          <div class="fit-list">
-            <h3>Akari is a strong fit if…</h3>
-            <ul>
-              <li>Your work or reputation is stronger than your current website.</li>
-              <li>You want better-fit enquiries, not just more traffic.</li>
-              <li>You value originality but need customers to feel comfortable.</li>
-              <li>You can support claims with real work, reviews or expertise.</li>
-            </ul>
-          </div>
-          <div class="fit-list fit-list--muted">
-            <h3>Probably not the right fit if…</h3>
-            <ul>
-              <li>The only priority is the lowest possible price.</li>
-              <li>You want invented proof or misleading claims.</li>
-              <li>A complex web application is the primary requirement.</li>
-              <li>You need a large agency team or full marketing department.</li>
-            </ul>
+
+          <div class="fit-pair">
+            <article class="fit-card shift-card shift-card--block fit-card--yes">
+              <span class="shift-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="16" r="4.4" stroke="currentColor" stroke-width="1.6"/><path d="M16 1.5v5M16 25.5v5M1.5 16h5M25.5 16h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".6"/></svg>
+              </span>
+              <div class="shift-card__body">
+                <h3>Akari is a strong fit if…</h3>
+                <ul class="fit-card__list">
+                  <li>Your work or reputation is stronger than your current website.</li>
+                  <li>You want better-fit enquiries, not just more traffic.</li>
+                  <li>You value originality but need customers to feel comfortable.</li>
+                  <li>You can support claims with real work, reviews or expertise.</li>
+                </ul>
+              </div>
+              <span class="shift-card__line" aria-hidden="true"></span>
+            </article>
+
+            <article class="fit-card shift-card shift-card--block fit-card--no">
+              <span class="shift-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.6" opacity=".75"/><path d="M9 23L23 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".75"/></svg>
+              </span>
+              <div class="shift-card__body">
+                <h3>Probably not the right fit if…</h3>
+                <ul class="fit-card__list">
+                  <li>The only priority is the lowest possible price.</li>
+                  <li>You want invented proof or misleading claims.</li>
+                  <li>A complex web application is the primary requirement.</li>
+                  <li>You need a large agency team or full marketing department.</li>
+                </ul>
+              </div>
+              <span class="shift-card__line" aria-hidden="true"></span>
+            </article>
           </div>
         </div>
       </section>

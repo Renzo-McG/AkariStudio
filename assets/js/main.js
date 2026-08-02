@@ -292,6 +292,120 @@ if (beforeAfter && beforeAfterInput) {
   });
 }
 
+const viewportDemo = document.querySelector("[data-viewport-demo]");
+
+if (viewportDemo) {
+  const frame = viewportDemo.querySelector("[data-viewport-frame]");
+  const iframe = viewportDemo.querySelector("[data-viewport-iframe]");
+  const handle = viewportDemo.querySelector("[data-viewport-handle]");
+  const readout = viewportDemo.querySelector("[data-viewport-readout]");
+  const presets = [...viewportDemo.querySelectorAll("[data-viewport-preset]")];
+  const MIN_WIDTH = 320;
+  const MAX_WIDTH = 1280;
+  const narrow = window.matchMedia("(max-width: 720px)");
+
+  const labelFor = (width) => {
+    if (width <= 430) return "Mobile";
+    if (width <= 900) return "Tablet";
+    return "Desktop";
+  };
+
+  let requestedWidth = MAX_WIDTH;
+
+  // The readout must describe what is actually on screen. The frame is
+  // capped by its container (width: min(100%, --preview-width)), so the
+  // rendered width can be narrower than the requested preset. The
+  // effective width is computed rather than measured, because the frame
+  // animates and would otherwise report a stale value mid-transition.
+  const effectiveWidth = () => {
+    const available = Math.round(
+      frame.parentElement ? frame.parentElement.getBoundingClientRect().width : requestedWidth
+    );
+    return available ? Math.min(requestedWidth, available) : requestedWidth;
+  };
+
+  const refreshReadout = () => {
+    if (!readout) return;
+    const actual = effectiveWidth();
+    readout.textContent = `${labelFor(actual)} · ${actual}px`;
+  };
+
+  const applyWidth = (width, { syncPresets = true } = {}) => {
+    requestedWidth = Math.round(Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, width)));
+    frame.style.setProperty("--preview-width", `${requestedWidth}px`);
+
+    if (syncPresets) {
+      presets.forEach((button) => {
+        const isActive = Number(button.dataset.viewportPreset) === requestedWidth;
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+    }
+
+    refreshReadout();
+  };
+
+  // The embed itself is lazily loaded natively via the iframe's own
+  // loading="lazy" attribute, so it works with or without this script.
+
+  presets.forEach((button) => {
+    button.addEventListener("click", () => {
+      applyWidth(Number(button.dataset.viewportPreset));
+    });
+  });
+
+  // Pointer-only resize handle. Presets remain the accessible control,
+  // so the handle stays out of the tab order.
+  if (handle) {
+    let startX = 0;
+    let startWidth = 0;
+
+    const onMove = (event) => {
+      applyWidth(startWidth + (event.clientX - startX) * 2, { syncPresets: true });
+    };
+
+    const onUp = (event) => {
+      viewportDemo.classList.remove("is-resizing");
+      handle.releasePointerCapture?.(event.pointerId);
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+    };
+
+    handle.addEventListener("pointerdown", (event) => {
+      event.preventDefault();
+      startX = event.clientX;
+      startWidth = frame.getBoundingClientRect().width;
+      viewportDemo.classList.add("is-resizing");
+      handle.setPointerCapture?.(event.pointerId);
+      window.addEventListener("pointermove", onMove);
+      window.addEventListener("pointerup", onUp);
+    });
+  }
+
+  const applyDefaultForViewport = () => {
+    applyWidth(narrow.matches ? 390 : MAX_WIDTH);
+  };
+
+  narrow.addEventListener("change", applyDefaultForViewport);
+
+  // Keep the readout honest when the container itself changes size,
+  // without attaching a continuous scroll or resize handler.
+  if ("ResizeObserver" in window) {
+    let lastNarrow = narrow.matches;
+    const stageObserver = new ResizeObserver(() => {
+      if (narrow.matches !== lastNarrow) {
+        lastNarrow = narrow.matches;
+        applyDefaultForViewport();
+        return;
+      }
+      refreshReadout();
+    });
+
+    stageObserver.observe(frame);
+  }
+
+  applyDefaultForViewport();
+}
+
 const intentSelect = document.querySelector("[data-intent-select]");
 const contactLinks = document.querySelectorAll("[data-contact-intent]");
 
