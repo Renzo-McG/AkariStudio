@@ -28,10 +28,22 @@ Primary sources:
 
 ## Current handover
 
-The approved final pre-outreach pass is live from `main` at implementation
-commit `a2e06df`, deployed and validated on 1 August 2026. The local feature
-branch `feature/final-studio-pass` remains as development history; it is not a
+The post-launch refinement pass is live from `main`, approved and deployed on
+2 August 2026. It reordered the case study so the before/after demonstration
+precedes the evidence workspace, replaced the phone mock with a live
+responsive preview of the Ashworth & Vale concept, introduced one reusable
+contrast-shift card treatment, and rebuilt the website routes and fit check.
+Implementation record: `AkariStudios/Studio Website/16 Post-Launch Refinement
+Implementation.md`.
+
+The previous pre-outreach pass was deployed from `main` at commit `a2e06df` on
+1 August 2026. Feature branches `feature/final-studio-pass` and
+`feature/post-launch-refinements` remain as development history; neither is a
 separate deployment.
+
+One known open item: the four customer decision cards keep the plain white
+mobile treatment, while the three decisive moves are filled navy on mobile.
+Lawrence reviewed this and chose to ship as-is.
 
 Implemented routes:
 
